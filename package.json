@@ -1,0 +1,17 @@
+{
+  "name": "notarealdb",
+  "version": "0.1.0",
+  "description": "An extremely simple \"database\" for Node.js that stores data in local JSON files.",
+  "license": "MIT",
+  "main": "notarealdb.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "dependencies": {
+    "shortid": "2.2.8"
+  },
+  "devDependencies": {
+    "jest": "22.4.2",
+    "tmp": "0.0.33"
+  }
+}
