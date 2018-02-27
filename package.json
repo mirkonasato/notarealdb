@@ -1,8 +1,12 @@
 {
   "name": "notarealdb",
   "version": "0.1.0",
-  "description": "An extremely simple \"database\" for Node.js that stores data in local JSON files.",
+  "description": "A \"fake\" database for Node.js that stores data in local JSON files, for testing and sample applications.",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mirkonasato/notarealdb.git"
+  },
   "main": "notarealdb.js",
   "scripts": {
     "test": "jest"

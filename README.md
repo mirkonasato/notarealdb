@@ -1,8 +1,6 @@
 # Not a Real DB
 
-An extremely simple "database" for Node.js that stores data in local JSON files.
-
-It's intended for testing and sample applications.
+A "fake" database for Node.js that stores data in local JSON files, for testing and sample applications.
 
 ## Usage
 
