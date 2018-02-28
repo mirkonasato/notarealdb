@@ -1,6 +1,6 @@
 {
   "name": "notarealdb",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A \"fake\" database for Node.js that stores data in local JSON files, for testing and sample applications.",
   "license": "MIT",
   "repository": {

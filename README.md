@@ -9,28 +9,30 @@ Create a `Database` instance specifying in which folder to store the data, and w
 ```js
 const { Database } = require('notarealdb');
 
-const db = new Database('./data', ['apples', 'oranges']);
+const db = new Database('./data');
+const apples = db.collection('apples');
+const oranges = db.collection('oranges');
 ```
 
 This will store apples in `./data/apples.json` and oranges in `./data/oranges.json`.
 
-You can then access each collection from the `db` instance, and manipulate it using the following CRUD operations:
+You can then and manipulate each collection using the following CRUD operations:
 
 ```js
 // create a new item; returns a generated id
-const id = db.apples.create({variety: 'Gala', weight: 133}); // => 'BJ4E9mQOG'
+const id = apples.create({variety: 'Gala', weight: 133}); // => 'BJ4E9mQOG'
 
 // list all items in a collection
-db.apples.list(); // => [{id: 'BJ4E9mQOG', variety: 'Gala', weight: 133}]
+apples.list(); // => [{id: 'BJ4E9mQOG', variety: 'Gala', weight: 133}]
 
 // get a single item
-db.apples.get('BJ4E9mQOG'); // => {id: 'BJ4E9mQOG', variety: 'Gala', weight: 133}
+apples.get('BJ4E9mQOG'); // => {id: 'BJ4E9mQOG', variety: 'Gala', weight: 133}
 
 // update an item
-db.apples.update({id: 'BJ4E9mQOG', variety: 'Braeburn', weight: 133});
+apples.update({id: 'BJ4E9mQOG', variety: 'Braeburn', weight: 133});
 
 // delete an item
-db.apples.delete('BJ4E9mQOG');
+apples.delete('BJ4E9mQOG');
 ```
 
 That's it. All operations are synchronous.
