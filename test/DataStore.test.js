@@ -1,8 +1,8 @@
 const tmp = require('tmp');
-const { Database } = require('./notarealdb');
+const { DataStore } = require('../dist/');
 
-const db = new Database(tmp.dirSync().name);
-const apples = db.table('apples');
+const store = new DataStore(tmp.dirSync().name);
+const apples = store.collection('apples');
 
 const ids = {};
 
@@ -19,7 +19,7 @@ test('can create and list items', () => {
 });
 
 test('creations are persisted', () => {
-  apples._reload();
+  apples.load();
   expect(apples.list()).toEqual([
     {id: ids.a, variety: 'Akane', weight: 101},
     {id: ids.b, variety: 'Braeburn', weight: 102},
@@ -37,7 +37,7 @@ test('can update an item', () => {
 });
 
 test('updates are persisted', () => {
-  apples._reload();
+  apples.load();
   expect(apples.get(ids.b)).toEqual({id: ids.b, variety: 'Barry', weight: 112});
 });
 
@@ -50,7 +50,7 @@ test('can delete an item', () => {
 });  
 
 test('deletions are persisted', () => {
-  apples._reload();
+  apples.load();
   expect(apples.list()).toEqual([
     {id: ids.a, variety: 'Akane', weight: 101},
     {id: ids.c, variety: 'Cox', weight: 103}
