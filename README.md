@@ -4,19 +4,19 @@ A "fake" database for Node.js that stores data in local JSON files, for testing 
 
 ## Usage
 
-Create a `Database` instance specifying in which folder to store the data, then create some "tables":
+Create a `DataStore` instance specifying in which folder to store the data, then create a collections for each object type you want to store:
 
 ```js
-const { Database } = require('notarealdb');
+const { DataStore } = require('notarealdb');
 
-const database = new Database('./data');
-const apples = database.table('apples');
-const oranges = database.table('oranges');
+const store = new DataStore('./data');
+const apples = store.collection('apples');
+const oranges = store.collection('oranges');
 ```
 
-This will store apples in `./data/apples.json` and oranges in `./data/oranges.json`.
+This will save apples in `./data/apples.json` and oranges in `./data/oranges.json`.
 
-You can then manipulate the data in each table using the following CRUD operations:
+You can then manipulate each collection using the following CRUD operations:
 
 ```js
 // create a new item; returns a generated id
