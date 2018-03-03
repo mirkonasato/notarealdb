@@ -10,12 +10,12 @@ class Database {
     this.dataDir = dataDir;
   }
 
-  collection(name) {
-    return new Collection(this.dataDir, name);
+  table(name) {
+    return new Table(this.dataDir, name);
   }
 }
 
-class Collection {
+class Table {
   constructor(dataDir, name) {
     this.name = name;
     this._dataFile = join(dataDir, name + '.json');

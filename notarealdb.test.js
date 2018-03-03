@@ -2,7 +2,7 @@ const tmp = require('tmp');
 const { Database } = require('./notarealdb');
 
 const db = new Database(tmp.dirSync().name);
-const apples = db.collection('apples');
+const apples = db.table('apples');
 
 const ids = {};
 
