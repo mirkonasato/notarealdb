@@ -3,20 +3,20 @@ import { join } from 'path';
 import { generate as generateId } from 'shortid';
 import { Entity } from './Entity';
 
-export class Collection {
+export class Collection<T extends Entity> {
   private file: string;
-  private entities: Entity[] = [];
+  private entities: T[] = [];
 
   constructor(dir: string, private name: string) {
     this.file = join(dir, name + '.json');
     this.load();
   }
 
-  create(entity: Entity): string {
-    const id = generateId();
-    this.entities.push({id, ...entity});
+  create(obj: object): string {
+    const entity = {id: generateId(), ...obj} as T;
+    this.entities.push(entity);
     this.save();
-    return id;
+    return entity.id;
   }
 
   delete(id): void {
@@ -25,17 +25,17 @@ export class Collection {
     this.save();
   }
 
-  get(id): Entity {
+  get(id: string): T {
     return this.entities.find((item) => item.id === id);
   }
 
-  list(): Entity[] {
+  list(): T[] {
     return this.entities;
   }
 
-  update(item): void {
-    const index = this.findIndex(item.id);
-    this.entities[index] = item;
+  update(entity: T): void {
+    const index = this.findIndex(entity.id);
+    this.entities[index] = entity;
     this.save();
   }
 

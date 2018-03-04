@@ -1,5 +1,6 @@
 import { existsSync, mkdirSync } from 'fs';
 import { Collection } from './Collection';
+import { Entity } from './Entity';
 
 export class DataStore {
   constructor(private dir: string) {
@@ -9,7 +10,7 @@ export class DataStore {
     this.dir = dir;
   }
 
-  collection(name): Collection {
-    return new Collection(this.dir, name);
+  collection<T extends Entity>(name): Collection<T> {
+    return new Collection<T>(this.dir, name);
   }
 }
