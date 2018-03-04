@@ -10,7 +10,7 @@ export class DataStore {
     this.dir = dir;
   }
 
-  collection<T extends Entity>(name): Collection<T> {
+  collection<T extends Entity>(name: string): Collection<T> {
     return new Collection<T>(this.dir, name);
   }
 }
