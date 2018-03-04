@@ -44,7 +44,7 @@ Files are read at startup and written after each modification. You can manually 
 If you use this module from TypeScript you can specify an interface representing the type of objects stored in each collection. E.g.
 
 ```ts
-const { DataStore } = require('notarealdb');
+import { DataStore } from 'notarealdb';
 
 interface Apple {
   id: string;
@@ -53,6 +53,7 @@ interface Apple {
 }
 
 const store = new DataStore('./data');
-const apples = store.collection<Apple>('apples'); // => apples: Collection<Apple>
-apples.list(); // => Apple[]
+const apples = store.collection<Apple>('apples'); // apples: Collection<Apple>
+const all = apples.list(); // all: Apple[]
+const one = apples.get('BJ4E9mQOG'); // one: Apple
 ```
