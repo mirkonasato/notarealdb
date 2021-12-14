@@ -12,7 +12,7 @@ export class Collection<T extends Entity> {
     this.load();
   }
 
-  create(obj: object): string {
+  create(obj: Omit<T,'id'>): string {
     const entity = {id: generateId(), ...obj} as T;
     this.entities.push(entity);
     this.save();
