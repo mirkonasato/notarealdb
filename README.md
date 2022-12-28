@@ -2,6 +2,10 @@
 
 A "fake" database for Node.js that stores data in local JSON files, for testing and sample applications.
 
+⚠️ __This project is no longer maintained__ ⚠️
+
+👉 Check out [Fakebase](https://github.com/mirkonasato/fakebase) instead
+
 ## Usage
 
 Create a `DataStore` instance specifying in which folder to store the data, then create a collections for each object type you want to store:
